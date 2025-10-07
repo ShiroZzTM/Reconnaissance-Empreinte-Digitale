@@ -56,7 +56,7 @@ Le système permet de comparer deux empreintes digitales ou de trouver automatiq
 
 Image Brute → Prétraitement → Extraction Features → Matching → Score
 
-text
+
 
 ### 1. Prétraitement de l'Image
 
@@ -64,7 +64,7 @@ text
 
 Image couleur → Niveaux de gris → Flou gaussien → Seuillage adaptatif
 
-text
+
 
 - **Conversion en niveaux de gris** : Simplification de l'image
 - **Flou gaussien (5×5)** : Réduction du bruit haute fréquence
@@ -104,7 +104,7 @@ Si distance(match1) < 0.75 × distance(match2)
 Sinon
 → Match rejeté
 
-text
+
 
 ## 📦 Prérequis
 
@@ -115,11 +115,11 @@ text
 ## 🚀 Installation
 
 ### 1. Cloner le Repository
-
+```
 git clone https://github.com/votre-username/fingerprint-recognition.git
 cd fingerprint-recognition
+```
 
-text
 
 ### 2. Installer les Dépendances
 
@@ -127,17 +127,15 @@ pip install opencv-python
 pip install opencv-contrib-python
 pip install numpy
 
-text
+
 
 ### 3. Vérifier l'Installation
-
+```
 python --version
 python -c "import cv2; print(cv2.version)"
-
-text
-
+```
 ## 📁 Structure du Projet
-
+```
 fingerprint-recognition/
 │
 ├── dataset/ # Dossier contenant vos empreintes
@@ -152,8 +150,7 @@ fingerprint-recognition/
 ├── main.py # Programme principal
 ├── README.md # Documentation
 └── requirements.txt # Dépendances Python
-
-text
+```
 
 ### Organisation des Datasets
 
@@ -164,13 +161,13 @@ text
 ## 💻 Utilisation
 
 ### Lancer le Programme
-
+```
 python main.py
+```
 
-text
 
 ### Menu Principal
-
+```
 //////////////////// MENU ////////////////////
 
 Comparer 2 empreintes
@@ -178,8 +175,8 @@ Comparer 2 empreintes
 Trouver la meilleure correspondance
 
 Quitter
+```
 
-text
 
 ### Option 1 : Comparer 2 Empreintes
 
@@ -193,6 +190,7 @@ text
    - Visualisation graphique des correspondances
 
 **Exemple** :
+```
 Choix [1-3]: 1
 
 Datasets disponibles :
@@ -215,8 +213,8 @@ Choix de la 2ème image : 2
 Points image1: 456
 Points image2: 478
 Correspondances: 342, Similarité: 75.00%
+```
 
-text
 
 ### Option 2 : Trouver la Meilleure Correspondance
 
@@ -226,6 +224,7 @@ text
 4. Affiche la meilleure correspondance avec son score
 
 **Exemple** :
+```
 Choix [1-3]: 2
 
 Sélectionnez un dataset [1-2] : 1
@@ -239,8 +238,8 @@ empreinte_3.png
 Choix de l'image de référence : 1
 
 Meilleure correspondance pour 'empreinte_1.png' → 'empreinte_3.png' (82.45%)
+```
 
-text
 
 ## 🔬 Comment Ça Marche
 
@@ -258,7 +257,7 @@ Fenêtre locale : 11×11
 
 Constante : C=2
 
-text
+
 
 **Résultat** : Image binarisée avec crêtes blanches sur fond noir
 
@@ -270,7 +269,7 @@ Détection des points-clés (keypoints)
 
 Calcul des descripteurs binaires pour chaque keypoint
 
-text
+
 
 **Résultat** : Liste de keypoints avec leurs descripteurs (coordonnées + vecteur 256 bits)
 
@@ -284,7 +283,6 @@ Test de ratio de Lowe (ratio=0.75)
 
 Filtrage des correspondances faibles
 
-text
 
 **Résultat** : Liste de correspondances robustes
 
@@ -292,7 +290,7 @@ text
 
 Score = (Nombre de correspondances / Nombre de keypoints image1) × 100
 
-text
+
 
 **Interprétation** :
 - **> 70%** : Très forte similarité (probablement la même empreinte)
@@ -313,7 +311,7 @@ Similarité: 79.88%
 
 ✓ Match confirmé : Même empreinte
 
-text
+
 
 ### Comparaison Négative
 
@@ -327,7 +325,6 @@ Similarité: 21.49%
 
 ✗ Pas de correspondance : Empreintes différentes
 
-text
 
 ## 📊 Performance
 
@@ -380,7 +377,7 @@ text
 Dans extract_features()
 orb = cv2.ORB_create(nfeatures=1000) # Augmenter pour plus de précision
 
-text
+
 
 ### Modifier le Ratio Test
 
@@ -388,7 +385,7 @@ Dans match_descriptors()
 if m.distance < 0.80 * n.distance: # Ratio plus permissif
 good_matches.append(m)
 
-text
+
 
 ### Paramètres de Seuillage
 
@@ -399,7 +396,7 @@ cv2.THRESH_BINARY_INV,
 blockSize=15, # Fenêtre plus large
 C=3) # Seuil plus strict
 
-text
+
 
 ## 🎯 Cas d'Usage
 
@@ -463,3 +460,4 @@ R: Ce projet est éducatif. Pour un usage production, envisagez des solutions co
 **Q: Comment améliorer la précision ?**  
 
 R: Augmentez le nombre de features ORB, utilisez des images haute qualité, et ajustez les paramètres de seuillage.
+
