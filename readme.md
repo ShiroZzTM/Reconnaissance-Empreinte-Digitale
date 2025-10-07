@@ -461,4 +461,5 @@ R: Oui, mais le score de similarité sera proportionnellement réduit.
 R: Ce projet est éducatif. Pour un usage production, envisagez des solutions commerciales certifiées.
 
 **Q: Comment améliorer la précision ?**  
+
 R: Augmentez le nombre de features ORB, utilisez des images haute qualité, et ajustez les paramètres de seuillage.
